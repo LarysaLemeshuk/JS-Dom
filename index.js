@@ -42,3 +42,17 @@ function consoleHello() {
 }
 
 secondButton.addEventListener('mouseenter', consoleHello);
+
+// При наведені на кнопку ні - потрібно її приховати (display: 'none')
+
+const noBtn = document.getElementById('no-btn');
+
+function ghostBtn(event) {
+//   const btn = event.target;
+//   btn.style.display = 'none';
+
+  event.target.removeEventListener('mouseenter', ghostBtn);
+  console.log('test');
+}
+
+noBtn.addEventListener('mouseenter', ghostBtn);
