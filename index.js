@@ -11,16 +11,21 @@
 
 */
 
-function getAlert() {
-  alert('Hello user!');
+function getAlert(event) {
+  const btn = event.target;
+
+  if (btn.style.backgroundColor === red) {
+    btn.style.backgroundColor = 'unset';
+  } else {
+    btn.style.backgroundColor = 'red';
+  }
 }
 
- const buttonElement = document.getElementById('btn');
+const buttonElement = document.getElementById('btn');
 
 buttonElement.addEventListener('click', getAlert);
 // 1 варіант: зареєстрували обробник  події натискання миші на кнопку
 // 2 варіант: навісили обробник натискання миші на кнопку
-
 
 /*
 
@@ -30,13 +35,10 @@ buttonElement.addEventListener('click', getAlert);
 
 */
 
+const secondButton = document.getElementById('second-btn');
 
-const secondButton= document.getElementById('second-btn');
-
-function consoleHello(){
-    console.log('Привіт');
-};
+function consoleHello() {
+  console.log('Привіт');
+}
 
 secondButton.addEventListener('mouseenter', consoleHello);
-
-
