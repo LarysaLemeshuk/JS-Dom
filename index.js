@@ -1,28 +1,13 @@
-const collection = document.getElementsByClassName('paragraph');
+const btn = document.querySelector('button');
 
-// for (let i = 0; i < collection.length; i++){
-//     collection[i].style.color = 'green'
-// }
+const btn2 = document.querySelector('.super-btn');
 
-// for...of - спеціальний цикл , який  перебирає обʼєкт по ключам
+const btn3 = document.querySelector('#btnbtn');
 
-for (let p of collection) {
-  p.style.color = 'green';
-}
+const btnCollection = document.querySelectorAll('button');
 
-const btns = document.getElementsByTagName('button');
-const arr = [...btns];
+const paragraphCollection = document.querySelectorAll('.paragraph:nth-child(even)')
 
-arr.forEach((button) => {
-  button.style.color = 'red';
-  button.style.background = 'black';
-});
-
-function hello(event) {
-  console.log('Hello user');
-  event.target.removeEventListener('click', hello);
-}
-
-for (let btn of btns) {
-  btn.addEventListener('click', hello);
+for(let p of paragraphCollection){
+    p.style.backgroundColor = 'yellow'
 }
