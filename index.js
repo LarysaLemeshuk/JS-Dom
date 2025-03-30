@@ -1,21 +1,28 @@
 /*
-Зробити конвертер з градусів Цельсію у Фарингейти
-Примітка. Формула для переходу від Цельіїв у Фарингейт:
-(температура_в_градусах_цельсія * 9.5) + 32
+1. Маємо div
+2. Маємо дві кнопки: на одній написано "Зробити червоним", на другій - "Зробити зеленим"
+
+3. За натисненням на кнопку, фоновий колір div з п. 1 має змінитися на відповідний колір, вказаний на кнопці
+
+
 */
 
-const converterForm = document.querySelector('#temperature-converter-form');
+const div = document.querySelector('#box');
 
-converterForm.addEventListener('submit', convertHandler);
+console.log(div.classList);
 
-function convertHandler(event) {
-  event.preventDefault();
 
-  const temperatureInput = Number(document.querySelector('#temperature').value);
+const [red, green] = document.querySelectorAll('.btn');
+red.addEventListener('click', redBtnHandler);
 
-  const farenheit = temperatureInput * 9 / 5 + 32;
+function redBtnHandler(event) {
+  //div.style.backgroundColor = 'red';
+  div.classList.toggle('bg-color-red')
+}
 
-  document.querySelector(
-    '#result'
-  ).innerHTML = `${temperatureInput} C = ${farenheit} F`;
+green.addEventListener('click', greenBtnHandler)
+
+function greenBtnHandler(event){
+    //div.style.backgroundColor = 'green';
+    div.classList.toggle('bg-color-green')
 }
