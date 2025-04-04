@@ -1,0 +1,51 @@
+const data = [
+  {
+    id: 1,
+    name: 'John',
+    description: 'Description for John',
+    profilePicture:
+     'https://i.pinimg.com/736x/cd/c8/ea/cdc8ea2b188ae3b030a3b3ac87157a5a.jpg',
+  },
+  {
+    id: 2,
+    name: 'Josh',
+    description: 'Description for Josh',
+    profilePicture:
+      'https://i.pinimg.com/736x/cd/c8/ea/cdc8ea2b188ae3b030a3b3ac87157a5a.jpg',
+  },
+  {
+    id: 3,
+    name: 'Jane',
+    description: 'Description for Jane',
+    profilePicture:
+      'https://i.pinimg.com/736x/cd/c8/ea/cdc8ea2b188ae3b030a3b3ac87157a5a.jpg',
+  },
+  {
+    id: 5,
+    name: 'Alex',
+    description: 'Description for Alex',
+    profilePicture:
+      'https://i.pinimg.com/736x/cd/c8/ea/cdc8ea2b188ae3b030a3b3ac87157a5a.jpg',
+  },
+  {
+    id: 6,
+    name: 'Nathan',
+    description: 'Description for Nathan',
+    profilePicture:
+      'https://i.pinimg.com/736x/cd/c8/ea/cdc8ea2b188ae3b030a3b3ac87157a5a.jpg',
+  },
+  {
+    id: 7,
+    name: 'Tracy',
+    description: 'Description for Tracy',
+    profilePicture:
+      'https://i.pinimg.com/736x/cd/c8/ea/cdc8ea2b188ae3b030a3b3ac87157a5a.jpg',
+  },
+  {
+    id: 8,
+    name: 'James',
+    description: 'Description for James',
+    profilePicture:
+     'https://i.pinimg.com/736x/cd/c8/ea/cdc8ea2b188ae3b030a3b3ac87157a5a.jpg',
+  },
+];
