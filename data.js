@@ -39,13 +39,13 @@ const data = [
     name: 'Tracy',
     description: 'Description for Tracy',
     profilePicture:
-      'https://i.pinimg.com/736x/cd/c8/ea/cdc8ea2b188ae3b030a3b3ac87157a5a.jpg',
+      'testhttps://i.pinimg.com/736x/cd/c8/ea/cdc8ea2b188ae3b030a3b3ac87157a5a.jpg',
   },
   {
     id: 8,
     name: 'James',
     description: 'Description for James',
     profilePicture:
-     'https://i.pinimg.com/736x/cd/c8/ea/cdc8ea2b188ae3b030a3b3ac87157a5a.jpg',
+     'testhttps://i.pinimg.com/736x/cd/c8/ea/cdc8ea2b188ae3b030a3b3ac87157a5a.jpg',
   },
 ];
