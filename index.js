@@ -13,3 +13,12 @@ function func() {
 }
 //func();
 const timeoutID = setTimeout(func, 2000);
+
+/*
+
+Напишіть функцію, яка буде вітати юзера alert( 'Hello user!')
+Вітати функція має юзера не одразу, а тільки через 8 секунд, пясля того, як сторінка завантажиться
+
+*/
+
+const helloTimeoutID = setTimeout(() => alert('Hello user!'), 8000);
