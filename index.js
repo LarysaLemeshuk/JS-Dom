@@ -1,106 +1,42 @@
-// / <article class="card-wrapper">
-// <div class="image-wrapper">
-//   <img
-//     class="card-image"
-//     src="https://i.pinimg.com/736x/cd/c8/ea/cdc8ea2b188ae3b030a3b3ac87157a5a.jpg"
-//     alt="John avatar "
-//   />
-// </div>
-// <h2 class="user-name">John</h2>
-// <p class="description">Description for John</p>
-// </article>
+/*
+Регулярні вирази - своєрідний фільтр для текстових даних
+Регулярні вирази - інструменттпорівняння якогось рядка із заданим шаблоном
+За допомогою регулярки ми описуємо, як має виглядати рядок який ми очікуємо від користувача
 
-const root = document.querySelector('#root');
+^ - початок рядка
+$ - кінець рядка
+[] - послідовність символів
+[a-z] - діапазон
+[a-zA-Z] - два діапазони одночасно
+[abcdifghi] - перерахувати вручну
 
-function createUserCard(user) {
-  // створення обгорти для картинки
-  const imgWrapper = createImageWrapper(user);
+/^[a-zA-Z]{2,5}/ - шукаємо від 2 до 5 літер великих чи маленьких
+/^[a-zA-Z]{2,}[0-9]+$/ - шукаємо слово будь-якої довжини  бідьше двох літер, в кінці має бути мінімум 1 цифра
+/^[a-zA-Z]{2,}[0-9]+\.$/ - шукаємо слово будь-якої довжини більше двох літер, в кінці має бути мінімум одна цифра і після цифри має бути крапка
+/^[^0-9]+$/ -
+*/
 
-  // створення h2
-  const h2 = createElement('h2', { classNames: ['username'] }, user.name);
+//const regexp = /^Test$/
 
-  // створення p
-  const p = createElement(
-    'p',
-    { classNames: ['description'] },
-    user.description
-  );
+const str1 = 'Hello';
+const str2 = new String('Hello');
 
-  // створення і повернення article, в який вкладені створені елементи
-  return createElement(
-    'article',
-    { classNames: ['card-wrapper'] },
-    imgWrapper,
-    h2,
-    p
-  );
-}
+// Regexp
 
-const cardArray = data.map((user) => createUserCard(user));
+const reg1 = /^[a-zA-Z]{2,5}$/;
+//console.log(reg1);
 
-root.append(...cardArray);
+const reg2 = new RegExp('^[a-zA-Z]{2,5}$');
+//console.log(reg2);
 
-/**
- *
- * @param {String} type - тег елемента, який потрібно створити
- * @param {String []} classNames - список класів, які потрібно додати до елемента
- * @param  {...Node} chilNodes - список дочірніх вузлів
- * @returns {HTML Element}
- */
+// Експереминтуємо: валідуємо емейл через регулярки
+const testString = 'sunnyday56@gmail.com'
+const emailRegExp = /[^@ Itirin]+@[^@|tlrin]+1.[@ItIrIn]+/;
 
-function createElement(type, { classNames }, ...chilNodes) {
-  const elem = document.createElement(type);
-  elem.classList.add(...classNames);
-  elem.append(...chilNodes);
+emailRegExp.exec(testString) // array
+emailRegExp.test(testString) // true
 
-  return elem;
-}
+testString.match(emailRegExp) // array спрацює як exec
 
-function imageLoadHandler({ target }) {
-  console.log('image successfully loaded');
-  const parentWrapper = document.querySelector(`#wrapper${target.dataset.id}`);
-  parentWrapper.append(target);
-}
-
-function imageErrorHandler({ target }) {
-  target.remove();
-  console.log('image loading has error');
-}
-
-function createUserImage(user) {
-  const img = document.createElement('img');
-  img.setAttribute('src', user.profilePicture);
-  img.setAttribute('alt', user.name);
-  img.dataset.id = user.id;
-  img.classList.add('card-image');
-
-  img.addEventListener('load', imageLoadHandler);
-  img.addEventListener('error', imageLoadHandler);
-  return img;
-}
-
-function createImageWrapper(user) {
-  //створення заглушки
-  const imgWrapper = createElement('div', { classNames: ['image-wrapper'] });
-  imgWrapper.setAttribute('id', `wrapper${user.id}`);
-
-  // визначаємо bacground-color заглушки з урахуванням імені користувача
-  imgWrapper.style.backgroundColor = stringToColour(user.name);
-
-  // створення img
-  const img = createUserImage(user);
-  return imgWrapper;
-}
-
-function stringToColour(str) {
-  let hash = 0;
-  str.split('').forEach((char) => {
-    hash = char.charCodeAt(0) + ((hash << 5) - hash);
-  });
-  let colour = '#';
-  for (let i = 0; i < 3; i++) {
-    const value = (hash >> (i * 8)) & 0xff;
-    colour += value.toString(16).padStart(2, '0');
-  }
-  return colour;
-};
+let str = 'Blue SKY' ;
+str.replace(/[A-Z]{3}/, 'test123'); // Blue test123
