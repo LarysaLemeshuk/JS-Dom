@@ -11,6 +11,11 @@ function loadImage(src) {
 
   // повертаємо проміс (промісифікаціям - коли ми огортажмо якийсь код в проміс, для того щоб забезпечити собі зручну роботу)
   return new Promise((resolve, reject) => {
+    // створюємо таймаут на 5 сек. для завантаження картинки
+    const timeoutId = setTimeout(() => {
+      reject('Image can`t be loaded');
+    }, 5000);
+
     // підписуємо створену картинку на подію лоад
     // якщо картинка завантажиться _ ми резолвимо проміс з елементом картинки
     img.addEventListener('load', () => {
@@ -20,6 +25,7 @@ function loadImage(src) {
     // підписуємо створену картинку на подію ерор
     // якщо картинка не завантажується - ми реджектимо з повідомленням про помилку
     img.addEventListener('error', () => {
+      clearTimeout(timeoutId);
       reject('Image can`t be loaded');
     });
   });
