@@ -18,7 +18,7 @@ f7c576ba3699bdd0b98ddcf196639992
 const API_KEY = 'f7c576ba3699bdd0b98ddcf196639992';
 const API_BASE = 'https://api.openweathermap.org/data/2.5/weather';
 
-const btn = document.querySelector('btn');
+const btn = document.querySelector('.btn');
 
 btn.addEventListener('click', buttonClickHandler);
 
@@ -28,57 +28,33 @@ function buttonClickHandler({ target }) {
 }
 
 function requestAPI(cityName) {
-  // готуєм url
-  const url = `${API_BASE}?q=${cityName}&appid=${API_KEY}$units=metric`;
-  console.log(url);
+  // 1. Готуємо URL
+  const url = `${API_BASE}?q=$(cityName)&appid=${API_KEY}&units=metric`;
 
-  // робимо запит
+  // 2. Робимо запит
   fetch(url)
     .then((response) => {
       return response.json();
     })
     .then((data) => {
-      // відмальовуємо погоду
+      // 3. Відмальовуємо погоду
       displayWeather(data);
     });
 }
 
-/*
-
-  <article class="weather">
-        <p>City name: Kyiv</p>
-        <p>Temperature: 7°C</p>
-        <p>Weather description: overcast clouds</p>
-      </article>
-*/
 
 function displayWeather(weatherObject) {
-  const {
-    name,
-    main: { temp },
-    weather: [{ description }],
-  } = weatherObject;
+  const {name, main: { temp }, weather: [{ description }],} = weatherObject;
 
-  // створюємо article
-  const article = document.createElement('article');
-  article.classList.add('weather');
+  const article = document.querySelector('#weather-box');
+  article.classList.add('weather-display');
 
-  // створюємо параграф з назвою міста
-  const cityName = document.createElement('p');
-  cityName.append('City name: ${name) ');
+  const city = document.querySelector('#city');
+  city.textContent = name;
 
-  // створюємо параграф з температурою
-  const temperature = document.createElement('P');
-  temperature.append(`Temperature: ${temp}°C`);
+  const temperature = document.querySelector('#temp');
+  temperature.textContent = `${temp}°C`;
 
-  // створюємо параграф з описом погоди
-  const weatherDescription = document.createElement('p');
-  weatherDescription.append(`Weather description: ${description}`);
-
-  // до article чіпляємо параграфи створені в п. 2-4
-  article.append(cityName, temperature, weatherDescription);
-
-  // знаходимо секцію і чіпляємо до неї article
-  const section = document.querySelector('.wrapper');
-  section.append(article);
+  const desc = document.querySelector('#description');
+  desc.textContent = description;
 }
